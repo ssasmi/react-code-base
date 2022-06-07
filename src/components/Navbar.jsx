@@ -77,6 +77,7 @@ const Navbar = () => {
           <NLink to="/">Main</NLink>
           <NLink to="/cards">Card</NLink>
           <NLink to="/tickets">Tickets</NLink>
+          <NLink to="/dashboard">Dashboard</NLink>
         </NavLink>
         <Search>
           <InputBase placeholder="search..." />

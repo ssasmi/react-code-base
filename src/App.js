@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import Homepage from "./pages/Homepage";
 import Cards from "./pages/Cards";
 import Tickets from "./pages/Tickets";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Route index element={<Homepage />} />
         <Route path="cards" element={<Cards />} />
         <Route path="tickets" element={<Tickets />} />
+        <Route path="dashboard" element={<Dashboard />} />
 
       </Route>
     </Routes>
