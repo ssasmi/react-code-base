@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
+import { useGlobalContext } from "../context/appContext";
 
 const Dashboard = () => {
   const [values, setValues] = useState({ company: "", position: "" });
+  const { createJob } = useGlobalContext();
+  const isLoading = false;
   console.log(values);
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -14,11 +17,10 @@ const Dashboard = () => {
     e.preventDefault();
     const { company, position } = values;
     if (company && position) {
+      createJob(values);
       setValues({ company: "", position: "" });
     }
   };
-
-  let isLoading = true;
 
   return (
     <Box
@@ -54,7 +56,7 @@ const Dashboard = () => {
         sx={{ mt: 3, mb: 2 }}
         disabled={!values.position}
       >
-        {!isLoading ? "Adding New Job..." : "Add Job"}
+        {isLoading ? "Adding New Job..." : "Add Job"}
       </Button>
     </Box>
   );
