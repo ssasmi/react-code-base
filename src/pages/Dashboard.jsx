@@ -3,6 +3,7 @@ import React from "react";
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 import { useGlobalContext } from "../context/appContext";
+import Jobs from "../components/Jobs";
 
 const Dashboard = () => {
   const [values, setValues] = useState({ company: "", position: "" });
@@ -27,43 +28,50 @@ const Dashboard = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      noValidate
-      sx={{ display: "flex", justifyContent: "center", gap: "15px", m: "10px" }}
-    >
-      <TextField
-        margin="normal"
-        id="company"
-        label="company address"
-        name="company"
-        autoFocus
-        value={values.company}
-        onChange={handleChange}
-        rows={3}
-      />
-      <TextField
-        margin="normal"
-        name="position"
-        label="position"
-        type="position"
-        id="position"
-        value={values.position}
-        onChange={handleChange}
-        rows={6}
-      />
-
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ mt: 3, mb: 2 }}
-        disabled={!values.position}
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        noValidate
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "15px",
+          m: "10px",
+        }}
       >
-        {isLoading ? "Adding New Job..." : "Add Job"}
-      </Button>
-    </Box>
-    <Jobs />
+        <TextField
+          margin="normal"
+          id="company"
+          label="company address"
+          name="company"
+          autoFocus
+          value={values.company}
+          onChange={handleChange}
+          rows={3}
+        />
+        <TextField
+          margin="normal"
+          name="position"
+          label="position"
+          type="position"
+          id="position"
+          value={values.position}
+          onChange={handleChange}
+          rows={6}
+        />
+
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+          disabled={!values.position}
+        >
+          {isLoading ? "Adding New Job..." : "Add Job"}
+        </Button>
+      </Box>
+      <Jobs />
+    </>
   );
 };
 
