@@ -6,9 +6,13 @@ import { useGlobalContext } from "../context/appContext";
 
 const Dashboard = () => {
   const [values, setValues] = useState({ company: "", position: "" });
-  const { createJob } = useGlobalContext();
+  const { createJob, fetchJobs } = useGlobalContext();
   const isLoading = false;
-  console.log(values);
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -27,7 +31,7 @@ const Dashboard = () => {
       component="form"
       onSubmit={handleSubmit}
       noValidate
-      sx={{ display: "flex", m: "10px" }}
+      sx={{ display: "flex", justifyContent: "center", gap: "15px", m: "10px" }}
     >
       <TextField
         margin="normal"
@@ -37,7 +41,7 @@ const Dashboard = () => {
         autoFocus
         value={values.company}
         onChange={handleChange}
-        rows={6}
+        rows={3}
       />
       <TextField
         margin="normal"
@@ -59,6 +63,7 @@ const Dashboard = () => {
         {isLoading ? "Adding New Job..." : "Add Job"}
       </Button>
     </Box>
+    <Jobs />
   );
 };
 

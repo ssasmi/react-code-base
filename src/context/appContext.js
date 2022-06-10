@@ -83,7 +83,7 @@ const AppProvider = ({ children }) => {
   const fetchJobs = async () => {
     setLoading();
     try {
-      const { data } = await axios.get(`/jobs`);
+      const { data } = await axios.get(`/userJob`);
       dispatch({ type: FETCH_JOBS_SUCCESS, payload: data.jobs });
     } catch (error) {
       dispatch({ type: FETCH_JOBS_ERROR });
