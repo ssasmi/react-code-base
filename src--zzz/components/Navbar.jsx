@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -45,31 +45,39 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 
 const NavLink = styled(Box)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    gap: "15px",
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  }));
+  display: "flex",
+  alignItems: "center",
+  gap: "15px",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
 
-  const NLink = styled(Link)(({ theme }) => ({
-    color: "#fff",
-    fontWeight: "bold",
-  }));
+const NLink = styled(Link)(({ theme }) => ({
+  color: "#fff",
+  fontWeight: "bold",
+}));
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate()
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" }, fontWeight: "bold" }}>
-          MUI PROJECT
+        <Typography
+          variant="h6"
+          sx={{ display: { xs: "none", sm: "block" }, fontWeight: "bold" }}
+          onClick={() => navigate("/")}
+        >
+          PROJECT#1
         </Typography>
         <Pets sx={{ display: { xs: "block", sm: "none" } }} />
         <NavLink>
           <NLink to="/">Main</NLink>
           <NLink to="/cards">Card</NLink>
+          <NLink to="/tickets">Tickets</NLink>
+          <NLink to="/dashboard">Dashboard</NLink>
         </NavLink>
         <Search>
           <InputBase placeholder="search..." />
