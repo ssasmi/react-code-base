@@ -1,6 +1,6 @@
-import { CurrentUserContext } from "contexts/currentUser";
-import useFetch from "hooks/useFetch";
-import useLocalStorage from "hooks/useLocalStorage";
+import { CurrentUserContext } from "../context/currentUser";
+import useFetch from "../hooks/useFetch";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { useContext, useEffect } from "react";
 
 const CurrentUserChecker = ({ children }) => {

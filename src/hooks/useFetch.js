@@ -1,9 +1,9 @@
 import axios from 'axios';
-import useLocalStorage from 'hooks/useLocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { useCallback, useEffect, useState } from 'react';
 
 const useFetch = (url) => {
-  const BASE_URL = 'https://conduit.productionready.io/api';
+  const BASE_URL = 'https://628a38525da6ddfd5d61021f.mockapi.io/';
 
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState(null);
@@ -53,4 +53,4 @@ const useFetch = (url) => {
   return [{ isLoading, response, error }, doFetch];
 };
 
-export 
+export default useFetch
