@@ -11,7 +11,6 @@ const Tickets = () => {
       arr.slice(i * size, i * size + size)
     );
   };
-  console.log(chunk([1,2,3,4,5], 2));
 
   return (
     <>

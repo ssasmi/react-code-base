@@ -64,7 +64,6 @@ const reducer = (state, action) => {
     return { ...state, isLoading: false }
   }
   if (action.type === CREATE_JOB_SUCCESS) {
-    console.log(state);
     return {
       ...state,
       isLoading: false,

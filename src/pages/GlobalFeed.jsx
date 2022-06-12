@@ -7,7 +7,6 @@ import Feed from "../components/Feed";
 const GlobalFeed = () => {
   const apiUrl = `/articles`;
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
-  console.log(response);
 
   useEffect(() => {
     doFetch();

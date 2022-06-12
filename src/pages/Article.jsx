@@ -22,7 +22,7 @@ const Article = () => {
   return (
     <div>
       {!fetchArticleIsLoading && fetchArticleResponse && (
-        <h1>{fetchArticleResponse.article.title}</h1>
+        <h1>{fetchArticleResponse.text}</h1>
       )}{" "}
     </div>
   );

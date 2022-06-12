@@ -98,9 +98,7 @@ const AppProvider = ({ children }) => {
       const { data } = await axios.post(`/userJob`, {
         ...userInput,
       });
-      console.log(data);
       dispatch({ type: CREATE_JOB_SUCCESS, payload: data.job });
-      console.log(data);
     } catch (error) {
       dispatch({ type: CREATE_JOB_ERROR });
     }
