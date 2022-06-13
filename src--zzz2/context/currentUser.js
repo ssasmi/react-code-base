@@ -11,6 +11,7 @@ const reducer = (state, action) => {
     case 'LOADING':
       return { ...state, isLoading: true };
     case 'SET_AUTHORIZED':
+      //console.log(action.payload);
       return {
         ...state,
         isLoggedIn: true,
@@ -42,3 +43,13 @@ export const CurrentUserProvider = ({ children }) => {
     </CurrentUserContext.Provider>
   );
 };
+
+// case "SET_AUTHORIZED":
+//   let curr = action.payload[0].filter((obj) => {
+//     return obj.token === Number(action.payload[1]);
+//   });
+//   return {
+//     ...state,
+//     isLoggedIn: true,
+//     isLoading: false,
+//     currentUser: curr[0].name,

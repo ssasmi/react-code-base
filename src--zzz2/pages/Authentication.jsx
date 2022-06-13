@@ -2,7 +2,7 @@ import { CurrentUserContext } from "../context/currentUser";
 import useFetch from "../hooks/useFetch";
 import useLocalStorage from "../hooks/useLocalStorage";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Authentication = () => {
   const [name, setName] = useState("");
@@ -10,17 +10,16 @@ const Authentication = () => {
   const [password, setPassword] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   const [, setToken] = useLocalStorage("token");
-  const [value, dispatch] = useContext(CurrentUserContext);
-  console.log(value);
+  const [, dispatch] = useContext(CurrentUserContext);
 
+  let navigate = useNavigate();
   const { pathname } = useLocation();
   const isLogin = pathname === "/login";
   const pageTitle = isLogin ? "Sign In" : "Sign Up";
   const descriptionLink = isLogin ? "/register" : "/login";
   const descriptionText = isLogin ? "Need an account?" : "Have an account?";
-  const apiUrl = isLogin ? "profiles" : "/profiletts";
+  const apiUrl = isLogin ? "profiles" : "/profiles";
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = isLogin ? { login, password } : { login, password, name };
@@ -38,11 +37,10 @@ const Authentication = () => {
     setToken(response.token);
     setIsSubmit(true);
     dispatch({ type: "SET_AUTHORIZED", payload: response.profiles });
-  }, [response, setToken, dispatch]);
-
-  // if (isSubmit) {
-  //   return <Redirect to="/" />;
-  // }
+    if (isSubmit) {
+      navigate("/");
+    }
+  }, [response, setToken, dispatch, isSubmit]);
 
   return (
     <>

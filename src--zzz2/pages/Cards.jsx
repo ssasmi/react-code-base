@@ -18,8 +18,8 @@ export default function Home() {
               Top {city.name} Tours
             </Typography>
             <Grid container spacing={5}>
-              {city.tours.map((tour) => (
-                <Card tour={tour} />
+              {city.tours.map((tour,id) => (
+                <Card key={id} tour={tour} />
               ))}
             </Grid>
           </>

@@ -7,7 +7,6 @@ const CurrentUserChecker = ({ children }) => {
   const [{ response }, doFetch] = useFetch("profiles");
   const [, dispatch] = useContext(CurrentUserContext);
   const [token] = useLocalStorage("token");
-console.log(token);
   useEffect(() => {
     if (!token) {
       dispatch({ type: "SET_UNAUTHORIZED" });
@@ -22,8 +21,11 @@ console.log(token);
     if (!response) {
       return;
     }
-    dispatch({ type: "SET_AUTHORIZED", payload: response.profiles });
-  }, [response, dispatch]);
+    const pay = response.filter((obj) => {
+      return obj.token === +token;
+    });
+    dispatch({ type: "SET_AUTHORIZED", payload: pay[0].name });
+  }, [response, dispatch, token]);
 
   return children;
 };

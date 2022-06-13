@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import Content from "../components/Content";
+import Content from "../components/Context";
 
 const Homepage = () => {
   
@@ -12,4 +12,4 @@ const Homepage = () => {
   );
 };
 
-export default { Homepage };
+export default Homepage;
