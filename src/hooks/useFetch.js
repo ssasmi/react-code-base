@@ -36,6 +36,7 @@ const useFetch = (url) => {
         if (!skipGetResponseAfterDestroy) {
           setResponse(res.data);
           setIsLoading(false);
+          console.log(res.data);
         }
       })
       .catch((error) => {

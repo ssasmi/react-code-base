@@ -4,10 +4,10 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import { useContext, useEffect } from "react";
 
 const CurrentUserChecker = ({ children }) => {
-  const [{ response }, doFetch] = useFetch("/user");
+  const [{ response }, doFetch] = useFetch("profiles");
   const [, dispatch] = useContext(CurrentUserContext);
   const [token] = useLocalStorage("token");
-
+console.log(token);
   useEffect(() => {
     if (!token) {
       dispatch({ type: "SET_UNAUTHORIZED" });
@@ -22,7 +22,7 @@ const CurrentUserChecker = ({ children }) => {
     if (!response) {
       return;
     }
-    dispatch({ type: "SET_AUTHORIZED", payload: response.user });
+    dispatch({ type: "SET_AUTHORIZED", payload: response.profiles });
   }, [response, dispatch]);
 
   return children;

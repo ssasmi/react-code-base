@@ -10,14 +10,15 @@ const Authentication = () => {
   const [password, setPassword] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   const [, setToken] = useLocalStorage("token");
-  const [, dispatch] = useContext(CurrentUserContext);
+  const [value, dispatch] = useContext(CurrentUserContext);
+  console.log(value);
 
   const { pathname } = useLocation();
   const isLogin = pathname === "/login";
   const pageTitle = isLogin ? "Sign In" : "Sign Up";
   const descriptionLink = isLogin ? "/register" : "/login";
   const descriptionText = isLogin ? "Need an account?" : "Have an account?";
-  const apiUrl = isLogin ? "/profiles/login" : "/profiles";
+  const apiUrl = isLogin ? "profiles" : "/profiletts";
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
 
   const handleSubmit = (e) => {
